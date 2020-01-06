@@ -1,0 +1,38 @@
+.card{
+	width: 200px;
+	height: 120px;
+	max-width: 400px;
+	background-color: #fff;
+	color:#777;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+}
+.header-image {
+  width: 60px;
+  height: 60px;
+}
+.header-image img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.btn-primary{
+	background-color: #fff;
+	color: #b47cff;
+	transition: all .3s ease-in;
+}
+.btn-primary:hover{
+	background-color: #b47cff;
+	color: #fff;
+}
+.btn-delete{
+	background-color: #fff;
+	color: #ff616f;
+	transition: all .4s ease-in;
+}
+.btn-delete:hover{
+	background-color: #ff616f;
+	color: #fff;
+}

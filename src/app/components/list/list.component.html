@@ -1,0 +1,10 @@
+<div class="list-famous-people">
+	<div class="header-list">
+		category
+	</div>
+	<div class="body-list">
+		<div *ngFor="let fp of famousPeople">
+			<app-card [fp]="fp"></app-card>
+		</div>
+	</div>
+</div>
