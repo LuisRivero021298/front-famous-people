@@ -2,8 +2,12 @@
 	background-color: #7c4dff;
 	color: #fff;
 }
+.nav-bar a{
+	text-decoration: none;
+}
 .nav-bar span{
 	text-transform: uppercase;
+	color: #fff;
 }
 .spacer {
   flex: 1 1 auto;

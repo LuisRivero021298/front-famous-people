@@ -1,10 +1,26 @@
 <div class="list-famous-people">
 	<div class="header-list">
-		category
+		<div>
+			<a [routerLink]="['/new']" class="add">
+				<mat-icon aria-hidden="false" aria-label="add icon" class="ligth-icon icon-large">
+					add_circle_outline
+				</mat-icon>
+			</a>
+		</div>
+		<mat-paginator 
+			[length]="famousPeople.length"
+            [pageSize]="page_size"
+			[pageSizeOptions]="[6, 12, 24]"
+			(page)='handlePage($event)'
+		>
+		</mat-paginator>
 	</div>
 	<div class="body-list">
-		<div *ngFor="let fp of famousPeople">
-			<app-card [fp]="fp"></app-card>
+		<div *ngIf="famousPeople.length === 0">
+			<h3>Empty List</h3>		
+		</div>
+		<div *ngFor="let fp of famousPeople | paginate:page_size:page_number; index as i">
+			<app-card [fp]="fp" (deleteFp)="deleteFamous($event, i)"></app-card>
 		</div>
 	</div>
 </div>

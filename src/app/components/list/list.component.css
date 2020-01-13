@@ -3,18 +3,25 @@
 	left: 200px;
 	top: 180px;
 	width: 70%;
-	height: 420px;
+	min-height: 420px;
 	background-color: #fff;
 	border-radius: 3px;
 	box-shadow: .5px .5px 3px #aaa;
 	display: grid;
-	grid-template-rows: 50px 1fr;
+	grid-template-rows: 60px 1fr;
 	grid-template-areas: "header-list"
 						 "body-list";
 }
 
 .list-famous-people .header-list{
 	border-bottom: 1px solid #ddd;
+	display: grid;
+	grid-template-columns: 100px 1fr;
+}
+.list-famous-people .header-list > div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .list-famous-people .body-list{
 	padding:25px 50px;
@@ -22,3 +29,9 @@
 	grid-gap: 10px;
 	grid-template-columns: 1fr 1fr 1fr; 
 }
+
+.add {
+	cursor: pointer;
+}
+
+

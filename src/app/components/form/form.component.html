@@ -1,0 +1,56 @@
+<mat-grid-list cols="4" rowHeight="65px"> <!-- Form!-->
+      <mat-grid-tile colspan="4" rowspan="1" *ngIf="!new">
+        <mat-radio-group aria-label="Edit" #editable="ngModel" [(ngModel)]="isEdit">
+            <mat-radio-button value="y" [checked]="isEdit === 'y'">Edit</mat-radio-button>
+            <mat-radio-button value="n" [checked]="isEdit === 'n'">No edit</mat-radio-button>
+        </mat-radio-group>
+      </mat-grid-tile> <!-- END EDITABLE !-->
+    
+      <mat-grid-tile [colspan]="format[0].cols" [rowspan]="format[0].rows">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="FIRST NAME" required #fName="ngModel" name="first" 
+                   [(ngModel)]="famousPeople.first_name" [disabled]="isEdit === 'n'">
+        </mat-form-field>
+      </mat-grid-tile> <!-- END FIRST NAME !-->
+
+      <mat-grid-tile [colspan]="format[1].cols" [rowspan]="format[1].rows">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="LAST NAME" required #lName="ngModel" name="last" 
+                   [(ngModel)]="famousPeople.last_name" [disabled]="isEdit === 'n'">
+        </mat-form-field>
+      </mat-grid-tile> <!-- END LAST NAME !-->
+
+    <mat-grid-tile [colspan]="format[2].cols" [rowspan]="format[2].rows">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="PROFESSION" required #prof="ngModel" name="prof" 
+                   [(ngModel)]="famousPeople.profession" [disabled]="isEdit === 'n'">
+        </mat-form-field>
+    </mat-grid-tile> <!-- END PROFESSION !-->
+
+    <mat-grid-tile [colspan]="format[3].cols" [rowspan]="format[3].rows">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="YEAR OF BIRTH" required #year="ngModel" name="year" 
+                   [(ngModel)]="famousPeople.year_of_birth" [disabled]="isEdit === 'n'">
+        </mat-form-field>
+    </mat-grid-tile> <!-- END YEAR OF BIRTH !-->
+
+    <mat-grid-tile [colspan]="format[4].cols" [rowspan]="format[4].rows" class="radio-tile">
+        <mat-radio-group aria-label="Select an option" #sex="ngModel" [(ngModel)]="famousPeople.sex" 
+                         [disabled]="isEdit === 'n'">
+            <mat-radio-button value="female"> F </mat-radio-button>
+            <mat-radio-button value="male"> M </mat-radio-button>
+        </mat-radio-group>
+    </mat-grid-tile> <!-- END SEX !-->
+
+      <mat-grid-tile [colspan]="format[5].cols" [rowspan]="format[5].rows">
+         <angular-file-uploader 
+            [config] = "afuConfig" 
+            class="loadImg" 
+            *ngIf="isEdit != 'n'"
+            (ApiResponse)="imageUpload($event)"
+         >
+         </angular-file-uploader>
+      </mat-grid-tile> <!-- END IMAGE !-->
+
+</mat-grid-list>
+<!--[checked]="famousPeople.sex === 'male'"!-->

@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FamousPeople } from '../../models/FamousPeople';
+import { Global } from '../../services/global';
 
 @Component({
   selector: 'app-card',
@@ -6,11 +8,24 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-@Input() fp:object;
+@Input() fp:FamousPeople;
+
+@Output() deleteFp = new EventEmitter();
+
+public url = Global.url;
+
   constructor() { }
 
   ngOnInit() {
   	
   }
+
+  delete(e, fp) {
+    this.deleteFp.emit({
+      fp
+    });
+  }
+  
+
 
 }

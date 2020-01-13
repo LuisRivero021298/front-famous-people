@@ -1,0 +1,24 @@
+.new-famous{
+	position: absolute;
+	left: 200px;
+	top: 180px;
+	width: 67%;
+    min-height: 350px;
+    max-height: 380px;
+	background-color: #fff;
+	border-radius: 3px;
+	box-shadow: .5px .5px 3px #aaa;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-rows: 70px 1fr;
+    padding:20px;
+}
+.new-famous h1 {
+	margin: 0;
+	text-align: center;
+}
+.form-new{
+	min-width: 150px;
+    width: 100%;
+}
+

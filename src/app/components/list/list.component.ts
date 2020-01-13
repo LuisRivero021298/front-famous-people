@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { FamousPeople } from '../../models/FamousPeople';
+import { ApiService } from '../../services/api.service';
+import { PageEvent } from '@angular/material';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -6,23 +11,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-	public famousPeople: Array<any>;
+	public famousPeople: FamousPeople[] = [];
+	page_size: number = 6;
+	page_number: number = 1;
 
-	constructor() {
-		this.famousPeople = [
-			{first_name: 'Cristiano', last_name: 'Dos Santos', 
-			year_of_birth: '06-02-1986', sex: 'male', profession: 'athlete'},
-			{first_name: 'Lionel', last_name: 'Messi', 
-			year_of_birth: '10-06-1988', sex: 'male', profession: 'athlete'},
-			{first_name: 'Luis', last_name: 'Rivero', 
-			year_of_birth: '02-12-1998', sex: 'male', profession: 'dios'},
-			{first_name: 'Jorge', last_name: 'Perez', 
-			year_of_birth: '01-03-1982', sex: 'male', profession: 'cientifico'}
-		];
+	constructor(
+		private api: ApiService,
+		private _router: Router,
+		private _route: ActivatedRoute
+	) {
+		
 	}
 
 	ngOnInit() {
-	
+		this.getFp();
 	}
 
+	ngOnChanges(){
+		//this.famousPeople = this.famousPeople;
+	}
+
+	handlePage(e: PageEvent) {
+		this.page_size = e.pageSize;
+		this.page_number = e.pageIndex + 1;
+	}
+
+	getFp(){
+		this.api.getFamousPeople().subscribe((data) => {this.famousPeople = data.data;});
+	}
+
+	ngDoCheck() {
+
+	}
+
+	deleteFamous(data: any, i) {
+		let _id = data.fp._id;
+		this._route.params.subscribe(params => {
+	      	this.api.deleteFamous(_id).subscribe(
+	        res => {
+	          if (res.status == 'success') {
+	            let famous = res.data;
+	            alert(`El famoso ${famous.first_name} a sido eliminado`);
+	            this.getFp();
+	          }
+	        },
+	        err => {
+	          alert(`Don't delete`);
+	        });
+	    });
+	}
 }
