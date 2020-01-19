@@ -1,26 +1,46 @@
 <div class="list-famous-people">
 	<div class="header-list">
-		<div>
+		<div class="add-container">
 			<a [routerLink]="['/new']" class="add">
 				<mat-icon aria-hidden="false" aria-label="add icon" class="ligth-icon icon-large">
 					add_circle_outline
 				</mat-icon>
 			</a>
 		</div>
-		<mat-paginator 
-			[length]="famousPeople.length"
-            [pageSize]="page_size"
-			[pageSizeOptions]="[6, 12, 24]"
-			(page)='handlePage($event)'
-		>
-		</mat-paginator>
+		<div class="search-container">
+			<app-search class="search_bar" (search)="handleSearch($event)"></app-search>
+		</div>
+		<div class="paginator-container">
+			<mat-paginator 
+				[length]="famousPeople.length"
+	            [pageSize]="page_size"
+				[pageSizeOptions]="[6, 12, 24]"
+				(page)='handlePage($event)'
+			>
+			</mat-paginator>
+		</div>
+		<div class="switch-container">
+			<button class="switch" id="switch" [ngClass]="['switch',classActive]" 
+					(click)="darkMode()">
+				<span>
+					<mat-icon aria-hidden="false" aria-label="sun icon" class="icon-medium">
+						brightness_7
+					</mat-icon>
+				</span>
+				<span>
+					<mat-icon aria-hidden="false" aria-label="moon icon" class="dark-icon  icon-medium">
+						brightness_3
+					</mat-icon>
+				</span>
+			</button>
+		</div>
 	</div>
 	<div class="body-list">
 		<div *ngIf="famousPeople.length === 0">
 			<h3>Empty List</h3>		
 		</div>
-		<div *ngFor="let fp of famousPeople | paginate:page_size:page_number; index as i">
-			<app-card [fp]="fp" (deleteFp)="deleteFamous($event, i)"></app-card>
+		<div *ngFor="let fp of famousPeople | paginate:page_size:page_number ; index as i">
+			<app-card [fp]="fp" (deleteFp)="deleteFamous($event, i, famousPeople.length)"></app-card>
 		</div>
 	</div>
 </div>

@@ -2,9 +2,9 @@
 	<h1>Add a new Famous</h1>
 	<div>
 		<form (ngSubmit)="create()" #fpForm="ngForm" class="form-new">
-			<app-form [famousPeople]="famousPeople" [new]="true" [format]="format"></app-form>
+			<app-form [famousPeople]="famousPeople" [new]="true" [format]="format" [format2]="format2"></app-form>
 			<mat-grid-list cols="4" rowHeight="45px">
-				<mat-grid-tile colspan="4" rownspan="1"> <button type="submit">Create</button> </mat-grid-tile>
+				<mat-grid-tile colspan="4" rownspan="1"> <button type="submit" class="btn">Create</button> </mat-grid-tile>
 			</mat-grid-list>
 		</form>
 	</div>

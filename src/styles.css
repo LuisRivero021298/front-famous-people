@@ -1,8 +1,139 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #fff; }
+body {
+	margin: 0; 
+	font-family: Roboto, "Helvetica Neue", sans-serif; 
+	background-color: #fff; 
+	transition: .4s ease all;
+}
+div.mat-paginator-page-size-label {
+	display: none !important;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+	border-color: #b47cff;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+	border-color: #b47cff;
+	background-color: #b47cff;
+}
+.mat-focused .mat-form-field-required-marker {
+	color: #b47cff;
+}
+.mat-radio-button.mat-radio-disabled .mat-radio-outer-circle, 
+.mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle{
+	border-color: rgba(0,0,0,.38);
+}
+.mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+	background-color: rgba(0,0,0,.38);
+}
+/* --------------- DARK MODE ---------------*/
+body.dark{
+	background-color: #101010;
+}
+body.dark .nav-bar{
+	background-color: #212121;
+}
 
+body.dark .top {
+	background-color: #0c0c0c;
+	border-bottom: 1px solid #0c0c0c;
+}
+
+body.dark .main-title > h1{
+	color: #eee !important;
+}
+
+/*--- HOME ---*/
+body.dark .list-famous-people,
+body.dark .new-famous,
+body.dark .detail-famous{
+	background-color: #141414;
+	box-shadow: none;
+}
+body.dark .list-famous-people .header-list {
+	border-bottom: 1px solid #232323 !important;
+}
+
+body.dark .ligth-icon{
+	color: #b47cff;
+}
+body.dark .mat-form-field-label, 
+body.dark .mat-form-field.mat-focused .mat-form-field-label{
+	color: #fff;
+}
+
+body.dark .mat-form-field-appearance-legacy .mat-form-field-underline,
+body.dark .mat-form-field-ripple, 
+body.dark .mat-form-field.mat-focused .mat-form-field-ripple {
+	background-color: #fff;
+}
+
+body.dark .mat-paginator,
+body.dark .mat-select-value,
+body.dark .mat-select-arrow{
+	color: #ccc;
+}
+body.dark .mat-paginator-icon {
+	color: #b47cff;
+}
+body.dark .mat-icon-button[disabled][disabled] .mat-paginator-icon{
+	color: #DEC5FF;
+}
+
+body.dark .card{
+	background-color: rgba(255,255,255,.07);/*#212121;*/
+	border: 1px solid #212121;
+	color: #fff;
+}
+body.dark .mat-card-subtitle{
+	color: #999;
+}
+
+body.dark .btn-primary,
+body.dark .btn-delete{
+	background-color: rgba(255,255,255,.07);
+}
+
+/*--- NEW ---*/
+body.dark .new-famous h1{
+	color: #fff;
+}
+body.dark .new-famous .mat-radio-outer-circle,
+body.dark .detail-famous .mat-radio-outer-circle{
+	border-color: #eee;
+}
+body.dark .new-famous .mat-radio-label-content,
+body.dark .detail-famous .mat-radio-label-content{
+	color: #eee;
+}
+body.dark .new-famous .mat-button-wrapper,
+body.dark .detail-famous .mat-button-wrapper {
+	color: #ddd;
+}
+
+/*--- DETAIL ---*/
+body.dark .mat-input-element:disabled,
+body.dark .mat-select-disabled .mat-select-value,
+body.dark .mat-form-field .mat-select.mat-select-disabled .mat-select-arrow{
+	color: rgba(255,255,255,.25);
+}
+body.dark .mat-input-element{
+	color: #eee;
+}
+
+body.dark .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle, 
+body.dark .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle,
+body.dark .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+	border-color:rgba(255,255,255,.15);
+}
+body.dark .mat-radio-button.mat-radio-disabled .mat-radio-inner-circle{
+	border-color: rgba(255,255,255,.15);
+	background-color: rgba(255,255,255,.15);
+}
+
+
+/*------------------------------------------*/
 .loadImg{
 	margin-top: 20px;
 	height: 30px;
@@ -10,7 +141,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 div.ng-star-inserted > div{
 	padding-left: 0 !important;
 }
-a.up_btn {  
+a.up_btn, .btn {  
 	border-radius: 5px !important;
 	cursor: pointer !important;
 	padding: 10px !important;
@@ -19,11 +150,110 @@ a.up_btn {
 	color: #fff !important;
 	text-transform: uppercase !important;
 }
+.btn{
+	background-color: #c50e29 !important;
+}
+/* -------------- ICON STYLE ------------------*/
 
 .icon-large{
 	font-size: 30px;
 }
+.icon-medium{
+	font-size: 25px;
+}
+
 .ligth-icon {
 	color: #7c4dff;
+}
+.dark-icon {
+	color: #fff;
+}
+
+/* -------------- RESPONSIVE -----------------*/
+@media (max-width: 1024px){
+	.main-title{
+		width: 70% !important;
+	}
+	.list-famous-people{
+		left: 102px !important;
+		width: 80% !important;
+	}
+	.header-list{
+		max-width: 819px !important;
+	}
+
+	.new-famous, .detail-famous{
+		left: 82px !important;
+		width: 80% !important;
+	}
+}
+@media (max-width: 768px){
+	.list-famous-people{
+		left: 57.5px !important;
+		width: 85% !important;
+	}
+	.body-list{
+		grid-template-columns: 1fr 1fr !important;
+		padding: 25px !important;
+	}
+	.card{
+		width: 230px !important;
+	}
+
+	.new-famous, .detail-famous{
+		left: 56.5px !important;
+	}
+}
+@media (max-width: 414px){
+	/*home*/
+	.list-famous-people{
+		left:10.6px !important;
+		width: 95% !important;
+	}
+	.header-list{
+		grid-template-columns: 80px 1fr !important;
+	}
+	.header-list > div{
+		height: 58px !important;
+		margin-top: 2px !important;
+	}
+	.mat-paginator{
+		max-height: 58px !important;
+	}
+	.mat-paginator-container{
+		padding: 0 !important;
+		max-height: 60px !important;
+	}
+
+	.mat-paginator-page-size{
+		display: none !important;
+	}
+	.body-list{
+		grid-template-columns: none !important;
+	}
+
+	/*new*/
+}
+@media (max-width: 360px){
+	/*home*/
+	.list-famous-people{
+		left:9px !important;
+		width: 95% !important;
+	}
+
+	/*new*/
+	.new-famous, .detail-famous{
+		left:9px !important;
+		padding: 20px 10px !important;
+		width: 322px !important;
+		max-height: 1000px !important;
+	}
+
+	/*detail*/
+	.detail-famous{
+		grid-template-columns: none !important;
+		grid-template-areas: "image-famous"
+							 "info-famous";
+	}
 }
 

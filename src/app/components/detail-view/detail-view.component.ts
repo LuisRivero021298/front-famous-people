@@ -20,6 +20,14 @@ export class DetailViewComponent implements OnInit {
 	 	{cols: 2, rows:1}
   	];
 
+	public format2 = [
+		{cols: 4, rows:1},
+	    {cols: 4, rows:1},
+	    {cols: 4, rows:1},
+	    {cols: 4, rows:1},
+	    {cols: 2, rows:1},
+	    {cols: 2, rows:1}
+	]
   	constructor(
 	 	private _route: ActivatedRoute,
 	 	private _router: Router,
@@ -38,19 +46,32 @@ export class DetailViewComponent implements OnInit {
   	}
 
   	update() {
-	 	this._route.params.subscribe( params => {
-			let _id = params['id'];
-			this._api.update(_id, this.famousPeople).subscribe(
-			  	res => {
-					if (res.status === 'success') {
-						this.famousPeople = res.data;
-						alert('Artículo editado con exito');
-					}
-			  	},
-			  	err => {
-				 	alert(err);
-			  	}
-			);
-	 	});
+  		let validate = this.validateForm(this.famousPeople);
+		if (!validate){
+			alert('Error');
+		} else {
+		 	this._route.params.subscribe( params => {
+				let _id = params['id'];
+				this._api.update(_id, this.famousPeople).subscribe(
+				  	res => {
+						if (res.status === 'success') {
+							this.famousPeople = res.data;
+							alert('Artículo editado con exito');
+						}
+				  	},
+				  	err => {
+					 	alert(err);
+				  	}
+				);
+		 	});
+	 	}
   	}
+
+  	validateForm(data: FamousPeople) {
+		if(data.first_name === '' || data.last_name === '' || data.profession === '' ||
+		   data.sex === '' || data.year_of_birth === '') {
+			return false
+		}
+		return true;
+	}
 }

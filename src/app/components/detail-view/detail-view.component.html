@@ -7,7 +7,8 @@
     </div>
     <div class="info-famous">
     	<form #formDetail="ngForm" (ngSubmit)="update()">
-   			<app-form [famousPeople]="famousPeople" [isEdit]="'n'" [format]="format" [id]="id"></app-form>
+   			<app-form [famousPeople]="famousPeople" [isEdit]="'n'" [format]="format" 
+            [format2]="format2" [id]="id"></app-form>
             <mat-grid-list cols="4" rowHeight="45px">
                <mat-grid-tile colspan="4" rownspan="1"> <button type="submit">Update</button> </mat-grid-tile>
     	    </mat-grid-list>

@@ -19,6 +19,15 @@ export class NewViewComponent implements OnInit {
 	    {cols: 2, rows:1},
 	    {cols: 2, rows:1}
 	];
+
+	public format2 = [
+		{cols: 4, rows:1},
+	    {cols: 4, rows:1},
+	    {cols: 4, rows:1},
+	    {cols: 4, rows:1},
+	    {cols: 2, rows:1},
+	    {cols: 2, rows:1}
+	]
   	constructor(
   		private _fService: ApiService,
   		private _route: ActivatedRoute,
@@ -31,7 +40,11 @@ export class NewViewComponent implements OnInit {
 	}
 
 	create() {
-		this._fService.createFamous(this.famousPeople).subscribe(
+		let validate = this.validateForm(this.famousPeople);
+		if (!validate){
+			alert('Error');
+		} else {
+			this._fService.createFamous(this.famousPeople).subscribe(
 	      	res => {
 		        if ( res.status == 'success') {
 		          this.status = res.status;
@@ -44,10 +57,20 @@ export class NewViewComponent implements OnInit {
 		          alert('Error al crear un artículo');
 	        	}	
 	      	},
-	      	err => {
-		        this.status = 'error';
-		        alert('Error al crear un artículo');
-	      	}
-	    );
+		      	err => {
+			        this.status = 'error';
+			        alert('Error al crear un artículo');
+		      	}
+	    	);
+		}
+		
+	}
+
+	validateForm(data: FamousPeople) {
+		if(data.first_name === '' || data.last_name === '' || data.profession === '' ||
+		   data.sex === '' || data.year_of_birth === '') {
+			return false
+		}
+		return true;
 	}
 }

@@ -18,13 +18,19 @@ export class FormComponent implements OnInit {
   @Input() isEdit:string = 'y';
   @Input() new:boolean = false;
   @Input() format: Format[];
+  @Input() format2: Format[];
 
+  public display: Format[];
+  profession: Array<any> = [
+    'actress', 'actor', 'singer', 'scientific', 
+    'athlete','businessman','businesswoman'
+  ];
   public afuConfig = {
     multiple: false,
     formatsAllowed: '.jpg,.png,.gif,.jpeg',
     maxSize: '50',
     uploadAPI:  {
-      url: Global.url+'upload-image/',
+      url: Global.url+'/upload-image/',
     },
     theme: 'attachPin',
     hideProgressBar: true,
@@ -45,7 +51,11 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+    if(screen.width < 500){
+      this.display = this.format2;
+    } else {
+      this.display = this.format;
+    }
   }
 
   onSubmit() {

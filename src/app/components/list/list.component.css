@@ -12,26 +12,77 @@
 	grid-template-areas: "header-list"
 						 "body-list";
 }
-
+/* ------------- HEADER STYLE -------------- */
 .list-famous-people .header-list{
 	border-bottom: 1px solid #ddd;
 	display: grid;
-	grid-template-columns: 100px 1fr;
+	grid-template-columns: 100px 200px 1fr 100px;
 }
 .list-famous-people .header-list > div{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+.list-famous-people .header-list div{
+	max-height: 59px !important;
+}
+
+.list-famous-people .header-list .add {
+	cursor: pointer;
+}
+
+.mat-paginator {
+	background: none !important;
+}
+
+
+.list-famous-people .header-list .switch{
+	background-color: #3f1dcb;
+	padding: 0;
+	border-radius: 1000px;
+	border: none;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	outline: none;
+}
+.switch span, .switch .mat-icon {
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	background: none !important;
+}
+.switch::after {
+	content: "";
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	background-color: #b47cff;
+	top: 0;
+	left: 0;
+	right: unset;
+	border-radius: 100px;
+	transition: .4s ease all;
+	box-shadow: 0px 0px 2px 2px rgba(0,0,0,.2);
+}
+.switch.active {
+	background-color: #b47cff !important;
+	color: #000 !important;
+}
+.switch.active::after {
+	left: unset;
+	right: 0;
+	background-color: #3f1dcb;
+}
+/* ------------- BODY STYLE -------------- */
 .list-famous-people .body-list{
 	padding:25px 50px;
 	display: grid;
 	grid-gap: 10px;
 	grid-template-columns: 1fr 1fr 1fr; 
-}
-
-.add {
-	cursor: pointer;
 }
 
 

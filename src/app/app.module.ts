@@ -2,14 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatToolbarModule, MatPaginatorModule,
          MatIconModule, MatCardModule, MatMenuModule, MatInputModule, MatRadioModule,
-         MatGridListModule} from '@angular/material';
+         MatGridListModule, MatSelectModule, MatDatepickerModule} from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CardComponent } from './components/card/card.component';
 import { ListComponent } from './components/list/list.component';
@@ -21,6 +22,7 @@ import { DetailViewComponent } from './components/detail-view/detail-view.compon
 import { ErrorComponent } from './components/error/error.component';
 import { FormComponent } from './components/form/form.component';
 import { NewViewComponent } from './components/new-view/new-view.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { NewViewComponent } from './components/new-view/new-view.component';
     DetailViewComponent,
     ErrorComponent,
     FormComponent,
-    NewViewComponent
+    NewViewComponent,
+    SearchComponent
   ],
   imports: [ //modules
     BrowserModule,
@@ -50,7 +53,11 @@ import { NewViewComponent } from './components/new-view/new-view.component';
     MatMenuModule,
     MatInputModule,
     MatRadioModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    ReactiveFormsModule
   ],
   providers: [ //services
     ApiService,

@@ -6,35 +6,41 @@
         </mat-radio-group>
       </mat-grid-tile> <!-- END EDITABLE !-->
     
-      <mat-grid-tile [colspan]="format[0].cols" [rowspan]="format[0].rows">
+      <mat-grid-tile [colspan]="display[0].cols" [rowspan]="display[0].rows">
         <mat-form-field class="example-full-width">
             <input matInput placeholder="FIRST NAME" required #fName="ngModel" name="first" 
                    [(ngModel)]="famousPeople.first_name" [disabled]="isEdit === 'n'">
         </mat-form-field>
       </mat-grid-tile> <!-- END FIRST NAME !-->
 
-      <mat-grid-tile [colspan]="format[1].cols" [rowspan]="format[1].rows">
+      <mat-grid-tile [colspan]="display[1].cols" [rowspan]="display[1].rows">
         <mat-form-field class="example-full-width">
             <input matInput placeholder="LAST NAME" required #lName="ngModel" name="last" 
                    [(ngModel)]="famousPeople.last_name" [disabled]="isEdit === 'n'">
         </mat-form-field>
       </mat-grid-tile> <!-- END LAST NAME !-->
 
-    <mat-grid-tile [colspan]="format[2].cols" [rowspan]="format[2].rows">
+    <mat-grid-tile [colspan]="display[2].cols" [rowspan]="display[2].rows">
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="PROFESSION" required #prof="ngModel" name="prof" 
-                   [(ngModel)]="famousPeople.profession" [disabled]="isEdit === 'n'">
+          <mat-label>PROFESSION</mat-label>
+          <mat-select [disabled]="isEdit === 'n'" #prof="ngModel" name="prof" [(ngModel)]="famousPeople.profession">
+            <mat-option *ngFor="let item of profession" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
     </mat-grid-tile> <!-- END PROFESSION !-->
 
-    <mat-grid-tile [colspan]="format[3].cols" [rowspan]="format[3].rows">
+    <mat-grid-tile [colspan]="display[3].cols" [rowspan]="display[3].rows">
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="YEAR OF BIRTH" required #year="ngModel" name="year" 
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" required #year="ngModel" name="year" 
                    [(ngModel)]="famousPeople.year_of_birth" [disabled]="isEdit === 'n'">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </mat-grid-tile> <!-- END YEAR OF BIRTH !-->
 
-    <mat-grid-tile [colspan]="format[4].cols" [rowspan]="format[4].rows" class="radio-tile">
+    <mat-grid-tile [colspan]="display[4].cols" [rowspan]="display[4].rows" class="radio-tile">
         <mat-radio-group aria-label="Select an option" #sex="ngModel" [(ngModel)]="famousPeople.sex" 
                          [disabled]="isEdit === 'n'">
             <mat-radio-button value="female"> F </mat-radio-button>
@@ -42,7 +48,7 @@
         </mat-radio-group>
     </mat-grid-tile> <!-- END SEX !-->
 
-      <mat-grid-tile [colspan]="format[5].cols" [rowspan]="format[5].rows">
+      <mat-grid-tile [colspan]="display[5].cols" [rowspan]="display[5].rows">
          <angular-file-uploader 
             [config] = "afuConfig" 
             class="loadImg" 
