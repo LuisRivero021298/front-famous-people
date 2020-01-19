@@ -56,11 +56,11 @@ export class DetailViewComponent implements OnInit {
 				  	res => {
 						if (res.status === 'success') {
 							this.famousPeople = res.data;
-							alert('Artículo editado con exito');
+							alert('Updated');
 						}
 				  	},
 				  	err => {
-					 	alert(err);
+					 	alert('Error ' + err);
 				  	}
 				);
 		 	});

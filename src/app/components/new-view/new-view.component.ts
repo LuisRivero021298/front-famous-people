@@ -50,16 +50,16 @@ export class NewViewComponent implements OnInit {
 		          this.status = res.status;
 		          this.famousPeople = res.data;
 
-		          alert('Articulo creado con exito');
+		          alert('Created');
 		          this._router.navigate(['/']);
 		        } else {
 		          this.status = 'error';
-		          alert('Error al crear un artículo');
+		          alert('Error to creating');
 	        	}	
 	      	},
 		      	err => {
 			        this.status = 'error';
-			        alert('Error al crear un artículo');
+			        alert('Error to creating');
 		      	}
 	    	);
 		}
